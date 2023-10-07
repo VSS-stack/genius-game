@@ -2,17 +2,35 @@
 #define LED2 4
 #define LED3 3
 #define LED4 2
+#define MAX_NUM_OF_LEDS 4
+
+int ledArray[MAX_NUM_OF_LEDS];
 
 void setup() {
+  initPin();
+  initGame();
+}
+
+void loop() {
+  for(int i = 0; i < MAX_NUM_OF_LEDS; i++) {
+    blinkLed(ledArray[i]);
+  }
+}
+
+
+/*---------- Functions ----------*/
+void initPin() {
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
   pinMode(LED4, OUTPUT);
 }
 
-void loop() {
-  blinkSequence1();
-  blinkAll();
+void initGame() {
+  ledArray[0] = LED1;
+  ledArray[1] = LED2;
+  ledArray[2] = LED3;
+  ledArray[3] = LED4;
 }
 
 void blinkSequence1() {
